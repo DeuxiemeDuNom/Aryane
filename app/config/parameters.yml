@@ -12,17 +12,3 @@ parameters:
     mailer_password: null
     locale: fr
     secret: 77f7891a88eac42a568ed97cd4b8ff19
-
-    #parameters:
-    #database_driver: pdo_mysql
-    #database_host: mysql55-10.pro
-    #database_port: null
-    #database_name: eentouchaxthesee
-    #database_user:  eentouchaxthesee
-    #database_password: Thaliemer0
-    #mailer_transport: smtp
-    #mailer_host: 127.0.0.1
-    #mailer_user: null
-    #mailer_password: null
-    #locale: fr
-    #secret: 77f7891a88eac42a568ed97cd4b8ff19
