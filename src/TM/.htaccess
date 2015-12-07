@@ -1,5 +1,0 @@
-AuthUserFile /www/.htpasswd
-AuthGroupFile /dev/null
-AuthName "Accès Restreint"
-AuthType Basic
-require valid-user

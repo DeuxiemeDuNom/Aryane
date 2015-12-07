@@ -25,8 +25,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security; // [Securiser acc
 
 class ArticleController extends Controller
 {
-  protected $siteName = "Aryane.net";
-  
   public function indexAction()
   {
     /* ======================== Comparaison ids ======================== */

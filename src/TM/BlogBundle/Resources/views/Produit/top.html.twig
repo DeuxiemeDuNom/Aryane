@@ -10,15 +10,7 @@
             <h5>Ref : {{top.ref}}</h5>
             <h5><a href="{{ path('tm_blog_detail', {'cat': top.subcategory.category.name, 
                                                     'subcat': top.subcategory.name}) }}"> - {{top.subcategory.name}} - </a></h5>
-            {#
-            <div class="product-wid-rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-            </div>
-            #}
+            
             <div class="product-wid-price">
                 <ins>{{top.price}} €</ins> <del>{{top.price|promo(10)}} €</del>
             </div>                            
