@@ -1,0 +1,46 @@
+{# /src/TM/UserBundle/Resources/views/Security/register.html.twig #}
+{# /src/TM/UserBundle/Resources/views/Security/login.html.twig #}
+
+{% extends "TMUserBundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }} | Inscription{% endblock title %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+
+    
+<div class="product-big-title-area under">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-bit-title text-center">
+                    <h2>Inscription</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="maincontent-area">
+    <br><br><br>
+    <div class="container">
+    	<div class="row">
+    		<div class="col-md-4 col-md-offset-4">
+    			
+    		
+    {# ==================================================== CORPS DE LA PAGE =================================================== #}
+           {% include "TMUserBundle:Registration:register_content.html.twig" %}
+
+    {# ================================================= FIN DU CORPS DE LA PAGE ================================================ #}
+    		</div>
+		</div>
+    </div>
+</div>
+
+<div class="product-widget-area">
+    <div class="zigzag-bottom"></div>
+</div>
+
+
+{% endblock fos_user_content %}

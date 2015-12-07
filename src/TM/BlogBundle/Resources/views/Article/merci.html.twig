@@ -1,0 +1,154 @@
+{# src/TM/BlogBundle/Resources/views/Article/legal.html.twig #}
+
+{% extends "TMBlogBundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }} | Fin de démo{% endblock title %}
+
+{% set name = 'aryane.net' %}
+
+{% block tm_blog_body %}
+
+<div class="product-big-title-area under">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="product-bit-title text-center">
+                        <h2>Merci</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End Page title area -->
+
+<div class="maincontent-area">
+    <br><br><br>
+    <div class="container">
+    {# ==================================================== CORPS DE LA PAGE =================================================== #}
+            
+
+          <div class="legal">{# ================================= Div légal ================================================ #}
+              <div class="paragraph">
+                <h4>Vous voilà arrivé à la fin de cette démo. Quelle aventure pleine de rebondissements! Si vous êtes curieux, cliquez <a href="https://fr.linkedin.com/pub/martial-etoka/99/586/34" target="_blank">ici</a>. Sinon, c'est pas grave, il paraît que c'est un vilain défaut...
+                </h4>
+              </div>
+
+          </div>{# ============================================= Fin Div légal ============================================= #}
+                
+                {# ============================================= Roll Credits ============================================= #}
+                <div class="room">
+                  <div class="screen">
+                     <div class="credit">
+                          <div class="agauche">
+                              <h4><u>Full cast</u></h4>
+                              <br>
+                              <p class="ups">Symfony</p>
+                              <p class="ups">Twig</p>
+                              <p class="ups">Bootstrap</p>
+                              <p class="ups">Jquery</p>
+                              <p class="ups">Developper</p>
+                              <p class="ups">SUPERVISING ART DIRECTOR</p>
+                              <p class="ups">Stunt Coordinator</p>
+                              <p class="ups">Guest Star</p>
+                              <p class="ups">Reponse D</p>
+                              <br>
+                              <h4><u>Special thanks to :</u></h4>
+                              <p class="ups">&nbsp;</p>
+                              <p class="ups">&nbsp;</p>
+                              <p class="ups">&nbsp;</p>
+                              <p class="ups">&nbsp;</p>
+                              <p class="ups">&nbsp;</p>
+                              <br><br><br>
+                              <p class="ups">&nbsp;</p>
+                              <br>
+                              <p class="ups">&nbsp;</p>
+                              <br>
+                              <br>
+                              <br>
+                              <h3>THE</h3>
+                              <br>
+                              <br>
+                              <br>
+                              <br>
+                              <h4>ou pas...</h4>
+                              <br>
+                              <br>
+                              <br>
+                              <br>
+                          </div>
+                          <div class="adroite">
+                              <h4>&nbsp;</h4>
+                              <br>
+                              <p class="caps">has itself</p>
+                              <p class="caps">has itself</p>
+                              <p class="caps">has itself</p>
+                              <p class="caps">has itself</p>
+                              <a href="https://fr.linkedin.com/pub/martial-etoka/99/586/34" target="_blank"><p class="caps">Catch me</p></a>
+                              <p class="caps">Hello kitty</p>
+                              <p class="caps">Jackie Chan</p>
+                              <p class="caps">Chuck Norris</p>
+                              <p class="caps">Obi-Wan Kenobi</p>
+                              <br>
+                              <h4>&nbsp;</h4>
+                              <p class="caps">My mom... (hi, mom!)</p>
+                              <p class="caps">Arthur Fonzarelli</p>
+                              <p class="caps">Cette chère Patience, la mère de Sureté</p>
+                              <p class="caps">Jonathan Boyer (ses tutos sauvent des vies)</p>
+                              <p class="caps">Sublime Text</p>
+                              <br><br><br>
+                              <p class="caps">...et vous.</p>
+                              <br>
+                              <p class="caps">(...especially if you give a job!)</p>
+                              <br>
+                              <br>
+                              <br>
+                              <h3>END</h3>
+                              <br>
+                              <br>
+                              <br>
+                              <br>
+                              <h4>&nbsp;</h4>
+                              <br>
+                              <br>
+                              <br>
+                              <br>
+                          </div>
+                      </div>  
+                 </div>
+              </div>
+
+
+                {# ================================================ Fin Div ================================================ #}
+
+
+            <br>
+            <hr>
+            <p>
+              <a href="{{ path('tm_blog_home') }}" class="btn btn-default">
+                <i class="glyphicon glyphicon-home"></i>
+                Retour à l'accueil
+              </a>
+
+              <a href="{{ path('tm_blog_commande') }}" class="btn btn-default">
+                <i class="glyphicon glyphicon-home"></i>
+                Consulter ma commande
+              </a>
+
+              <a href="https://www.youtube.com/watch?v=0Bmhjf0rKe8" target="_blank" class="btn btn-default">
+                <i class="glyphicon glyphicon-gift"></i>
+                Voir une vidéo de bébé chat
+              </a>
+            </p>
+
+
+            
+
+
+    {# ================================================= FIN DU CORPS DE LA PAGE ================================================ #}
+    </div>
+</div>
+
+<div class="product-widget-area">
+    <div class="zigzag-bottom"></div>
+</div>
+    
+{% endblock tm_blog_body %}

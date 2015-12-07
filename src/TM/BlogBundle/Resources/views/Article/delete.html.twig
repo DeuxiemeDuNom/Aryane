@@ -1,0 +1,83 @@
+
+
+{# src/TM/BlogBundle/Resources/views/Article/delete.html.twig #}
+
+{% extends 'TMBlogBundle::layout.html.twig' %}
+
+{% block title %}{{ parent() }} | Supprimer un article{% endblock title %}
+
+{% block tm_blog_body %}
+
+
+<!-- ==================================================== Début du Corps ==================================================== -->
+<div class="jumbotron white">
+    <div class="container-fluid">
+      
+      <!-- Colonne de gauche-->
+      <div class="col-md-3 hidden-xs"></div>
+      
+      
+      <!-- Colonne du milieu-->
+      <div class="col-md-6">
+        <!--  Ligne du milieu 1-->
+        <div class="row">
+
+          <!-- Ligne 1 gauche -->
+          <div class="col-md-12">
+
+            <fieldset class="fielding">
+              <legend>
+                <h2 class="dyna">Supprimer un article</h2>
+              </legend>
+              <p class="erreur">
+                Etes-vous certain de vouloir supprimer l'article "{{ article.name }}" ?
+              </p>
+              <br>
+              <img
+                  src="{{ asset(article.image.webPath) }}"
+                  alt="{{ article.image.alt }}"
+                />
+              <hr>
+              {# On met l'id de l'article dans la route de l'action du formulaire #}
+              <form action="{{ path('tm_blog_delete', {'id': article.id}) }}" method="post">
+                <a href="{{ path('tm_blog_home') }}" class="btn btn-default">
+                  <i class="glyphicon glyphicon-home"></i>
+                  Retour à l'accueil
+                </a>
+                <a href="{{ path('tm_blog_presentation', {'id': article.id}) }}" class="btn btn-default">
+                  <i class="glyphicon glyphicon-chevron-left"></i>
+                  Retour à l'article
+                </a>
+                {# Ici j'ai écrit le bouton de soumission à la main #}
+                <input type="submit" value="Supprimer" class="btn btn-delete" />
+                {# Ceci va générer le champ CSRF #}
+                {{ form_rest(form) }}
+              </form>
+            </fieldset>
+
+          </div>
+          <!-- Ligne 1 droite -->
+          <!-- None -->
+
+        </div>
+        
+
+        <!--  Ligne du milieu 2-->
+        <div class="row">
+          
+          <!-- Ligne 2 gauche -->
+          <div class="col-md-6"></div>
+          <!-- Ligne 2 droite -->
+          <div class="col-md-6"></div>
+        </div>
+      </div>
+      
+      
+      <!-- Colonne de droite-->
+      
+      <div class="col-md-3 hidden-xs"></div>
+    </div>
+</div>
+<!-- ==================================================== fin du Corps ==================================================== -->
+
+{% endblock tm_blog_body %}

@@ -1,0 +1,49 @@
+<div class="col-md-4">
+
+    {# ============================ Rechecher un produit ============================ #}
+    <div class="single-sidebar">
+      <h2 class="sidebar-title">Rechercher un produit</h2>
+      <form action="{{path('tm_blog_search')}}" method="get">
+          <input type="text" name="keyword" placeholder="Rechercher un produit...">
+          <input type="submit" value="Rechercher">
+      </form>
+
+    </div>
+    
+    <div class="single-sidebar">
+      <h2 class="sidebar-title">Produits</h2>
+        {# ============================ Boucle autres produits ============================ #}
+        {% for prod in autres %}
+          <div class="thubmnail-recent">
+              <img  
+                    src="{{ asset(prod.image.webPath) }}"
+                    alt="{{ prod.image.alt }}"
+                    class="recent-thumb"
+              >
+              <h2><a href="{{path('tm_blog_presentation', {'id': prod.id})}}">{{prod.name}} </a></h2>
+              <div class="product-sidebar-price">
+                  <ins>{{prod.price}} €</ins> <del>{{prod.price|promo(10)}} €</del> 
+              </div>                             
+          </div>
+        {% endfor %}
+
+    </div>
+    
+    <div class="single-sidebar">
+        {% if commentaires %}
+          <h2 class="sidebar-title">Commentaires</h2>
+          <ul>
+              {% for commentaire in commentaires %}
+                <li>
+                  <p>Le {{commentaire.date|date("d/m/Y à H:i")}} - Par {{commentaire.user.username}} sur <a href="{{path('tm_blog_presentation', {'id': commentaire.article.id})}}">{{commentaire.article.name}}</a></p>
+                    
+                <p>
+                  <i>
+                    “{{commentaire.content}}”
+                  </i>
+                </p></li>
+              {% endfor %}
+          </ul>
+        {% endif %}
+    </div>
+</div>

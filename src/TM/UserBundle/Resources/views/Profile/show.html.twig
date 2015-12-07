@@ -1,0 +1,47 @@
+{# /src/TM/UserBundle/Resources/views/Security/confirmed.html.twig #}
+
+{% extends "TMUserBundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }} | Profil{% endblock title %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+
+    
+<div class="product-big-title-area under">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-bit-title text-center">
+                    <h2>Profil</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="maincontent-area">
+    <br><br><br>
+    <div class="container">
+    	<div class="row">
+    		<div class="col-md-6 col-md-offset-3">
+    			
+    		
+    {# ==================================================== CORPS DE LA PAGE =================================================== #}
+    
+    {% include "FOSUserBundle:Profile:show_content.html.twig" %}
+
+    {# ================================================= FIN DU CORPS DE LA PAGE ================================================ #}
+    		</div>
+		</div>
+    </div>
+</div>
+
+<div class="product-widget-area">
+    <div class="zigzag-bottom"></div>
+</div>
+
+
+{% endblock fos_user_content %}

@@ -1,0 +1,60 @@
+{# /src/TM/UserBundle/Resources/views/Security/confirmed.html.twig #}
+
+{% extends "TMUserBundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }} | Confirmation{% endblock title %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+
+    
+<div class="product-big-title-area under">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-bit-title text-center">
+                    <h2>Confirmation</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="maincontent-area">
+    <br><br><br>
+    <div class="container">
+    	<div class="row">
+    		<div class="col-md-6 col-md-offset-3">
+    			
+    		
+    {# ==================================================== CORPS DE LA PAGE =================================================== #}
+        
+	<h3>{{ 'registration.confirmed'|trans({'%username%': user.username|capitalize}) }}</h3>
+
+    {% if app.session is not empty %}
+        {% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}
+        {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>{% endif %}
+    {% endif %}
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <a href="{{path('tm_blog_home')}} " class="custom_btn"><span class="glyphicon glyphicon-user"></span>  Retour à l'accueil</a>
+    
+ 
+
+
+    {# ================================================= FIN DU CORPS DE LA PAGE ================================================ #}
+    		</div>
+		</div>
+    </div>
+</div>
+
+<div class="product-widget-area">
+    <div class="zigzag-bottom"></div>
+</div>
+
+
+{% endblock fos_user_content %}

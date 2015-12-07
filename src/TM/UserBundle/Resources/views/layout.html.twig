@@ -1,0 +1,17 @@
+{# /src/TM/UserBundle/Resources/views/layout.html.twig #}
+
+{% extends '::base.html.twig' %}
+
+{% block body %}
+     
+    {#  ==================================== Header ==================================== #}
+    {{ include("TMBlogBundle:Article:header.html.twig") }}
+    
+    {#  ==================================== Corps ==================================== #}
+    {% block fos_user_content %}
+    {% endblock fos_user_content %}
+    
+    {#  ==================================== Footer ==================================== #}
+    {{ include("TMBlogBundle:Article:footer.html.twig") }}
+
+{% endblock body %}

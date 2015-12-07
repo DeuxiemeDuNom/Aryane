@@ -1,0 +1,116 @@
+tm_blog_home:
+    path:     /
+    defaults: { _controller: TMBlogBundle:Article:index }
+
+tm_blog_global:
+    path:     /collection
+    defaults: { _controller: TMBlogBundle:Article:global }
+
+tm_blog_subcats:
+    path:     /categorie/{cat}
+    defaults: { _controller: TMBlogBundle:Article:subcats }
+
+tm_blog_detail:
+    path:     /categorie/{cat}/{subcat}
+    defaults: { _controller: TMBlogBundle:Article:detail }
+
+tm_blog_contact:
+    path:     /contact
+    defaults: { _controller: TMBlogBundle:Article:contact }
+
+tm_blog_presentation:
+    path:     /produit/{id}
+    defaults: { _controller: TMBlogBundle:Produit:presentation }
+    requirements:
+        id: \d+
+
+tm_blog_panier:
+    path:     /panier
+    defaults: { _controller: TMBlogBundle:Panier:panier }
+
+tm_blog_validation:
+    path:     /validation
+    defaults: { _controller: TMBlogBundle:Panier:validation }
+
+tm_blog_add:
+    path:      /admin/add
+    defaults:  { _controller: TMBlogBundle:Article:add }
+
+tm_blog_edit:
+    path:      /admin/edit/{id}
+    defaults:  { _controller: TMBlogBundle:Article:edit }
+    requirements:
+        id: \d+
+
+tm_blog_delete:
+    path:      /admin/delete/{id}
+    defaults:  { _controller: TMBlogBundle:Article:delete }
+    requirements:
+        id: \d+
+
+tm_blog_gallery:
+    path:     /gallerie
+    defaults: { _controller: TMBlogBundle:Article:gallery }
+
+tm_blog_voir_contact:
+    path:      /admin/voir_contact
+    defaults:  { _controller: TMBlogBundle:Article:viewContact }
+
+tm_blog_legal:
+    path:      /mention_légales
+    defaults:  { _controller: TMBlogBundle:Article:legal }
+
+tm_blog_about:
+    path:      /a_propos
+    defaults:  { _controller: TMBlogBundle:Article:about }
+
+tm_blog_ciao:
+    path:     /ciao
+    defaults: { _controller: TMBlogBundle:Article:ciao }
+
+tm_blog_fill:
+    path:      /remplir
+    defaults:  { _controller: TMBlogBundle:AddArticle:ajouter }
+
+tm_blog_empty:
+    path:      /vider
+    defaults:  { _controller: TMBlogBundle:AddArticle:vider }
+
+tm_blog_remove:
+    path:      /retirer
+    defaults:  { _controller: TMBlogBundle:AddArticle:remove }
+
+tm_blog_fullsell:
+    path:      /top_des_ventes
+    defaults:  { _controller: TMBlogBundle:Top:fullSell }
+
+tm_blog_fullnew:
+    path:      /top_nouveaute
+    defaults:  { _controller: TMBlogBundle:Top:fullNew }
+
+tm_blog_search:
+    path:      /recherche
+    defaults:  { _controller: TMBlogBundle:Search:search }
+
+tm_blog_checkout:
+    path:      /checkout
+    defaults:  { _controller: TMBlogBundle:Merci:commande }
+
+tm_blog_commande:
+    path:      /commande
+    defaults:  { _controller: TMBlogBundle:Panier:commandeList }
+
+tm_blog_merci:
+    path:      /merci
+    defaults:  { _controller: TMBlogBundle:Header:merci }
+
+tm_blog_test:
+    path:      /test
+    defaults:  { _controller: TMBlogBundle:Test:test }
+
+tm_blog_shutup:
+    path:      /supprimer_commentaire
+    defaults:  { _controller: TMBlogBundle:Article:shutUp }
+
+gregwar_captcha_routing:
+    resource: "@GregwarCaptchaBundle/Resources/config/routing/routing.yml"

@@ -1,0 +1,185 @@
+{% extends 'TMBlogBundle::layout.html.twig' %}
+
+{% block title %}{{ parent() }} | {{title}}{% endblock title %}
+
+{% block tm_blog_body %}
+
+{% set no_commande = 0 %}
+
+{% set pays = "" %}
+{% set prenom = "" %}
+{% set nom = "" %}
+{% set entreprise = "" %}
+{% set adresse = "" %}
+{% set batiment = "" %}
+{% set ville = "" %}
+{% set code_postal = "" %}
+{% set email = "" %}
+{% set tel = "" %}
+{% set comments = "" %}
+
+
+<div class="product-big-title-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-bit-title text-center">
+                    <h2>{{title}}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="maincontent-area under">
+    <br><br><br>
+    <div class="container">
+    {# ==================================================== CORPS DE LA PAGE =================================================== #}
+
+            
+            {% if commande_list is empty %}
+              <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                  <h2 >Aucune commande en cours</h2>br
+                <a class="custom_btn" href="{{path('tm_blog_home')}}"><span class="glyphicon glyphicon-home"></span> Retour à l'accueil</a>
+                </div>
+              </div>
+            {% endif %}
+
+            {# ======================= Affichage eventuel des commandes en cours ======================= #}
+
+            {% if display %}
+
+                {% for commande in commande_list %}
+
+                  {% for info in commande|slice(2,1) %}
+                      {% for truc in info %}
+                                    {% set pays = truc.pays %}
+                                    {% set prenom = truc.prenom %}
+                                    {% set nom = truc.nom %}
+                                    {% set entreprise = truc.entreprise %}
+                                    {% set adresse = truc.adresse %}
+                                    {% set batiment = truc.batiment %}
+                                    {% set ville = truc.ville %}
+                                    {% set code_postal = truc.code_postal %}
+                                    {% set email = truc.email %}
+                                    {% set tel = truc.tel %}
+                                    {% set comments = truc.comments %}
+                      {% endfor %}
+                  {% endfor %}
+
+                  {% set no_commande = no_commande + 1 %}
+                  <table cellspacing="0" class="shop_table cart">
+                        <thead>
+                            <tr>
+                                {% for date in commande|slice(0,1) %}
+                                    <th colspan="4" class="product-name">Commande n° : 00{{no_commande}} => [ {{date|date("d/m/Y - H:i")}} ] </th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <thead>
+                            <tr>
+                                <th class="product-name">Produit(s)</th>
+                                <th class="product-price">Prix</th>
+                                <th class="product-quantity">Quantité</th>
+                                <th class="product-subtotal">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if commande is not empty %}
+
+                                {% set qte = 0 %}
+                                {% set total = 0 %}
+
+
+                                {% for part2 in commande|slice(1,1) %}
+                                    {% for art in part2 %}
+                                      {% set qte = qte + art.qte %}
+
+                                      {% set total = total + (art.price * art.qte)  %}
+                                    {% endfor %}
+                                {% endfor %}
+
+                               
+
+                                
+
+                                {% for part2 in commande|slice(1,1) %}
+                                  {% for article in part2 %}
+                                      <tr class="cart_item">
+
+                                          <td class="product-name">
+                                              <a href="{{path('tm_blog_presentation', {'id': article.id})}}">{{article.name}}</a> 
+                                          </td>
+
+                                          <td class="product-price">
+                                              <span class="amount">{{article.price}} €</span> 
+                                          </td>
+
+                                          <td class="product-quantity">
+                                              <div class="quantity buttons_added">
+                                                  <strong>X</strong> {{article.qte}}
+                                              </div>
+                                          </td>
+
+                                          <td class="product-subtotal">
+                                              <span class="amount">{{article.price * article.qte}} €</span> 
+                                          </td>
+                                      </tr>
+                                  {% endfor %}
+                                {% endfor %}
+                            
+                            {% endif %}
+                            
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3" class="product-name">Total HT</td>
+                                <td class="product-price">{{total}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="product-name">Total TTC</td>
+                                <td class="product-price"><strong>{{total|promo(20)}}</strong></td>
+                            </tr>
+                              {% if commande|slice(2,1) is not empty %}
+                                <tr>
+                                    <td colspan="2" class="product-name"><strong>Adresse de livraison</strong></td>
+                                    <td colspan="2" class="product-price">
+                                     
+                                        <p>{{prenom}} {{nom}}</p>
+                                        <p>{% if batiment != "" %}{{batiment}} {% endif %}{{adresse}}</p>
+                                        <p>{{code_postal}} {{ville}}</p>
+                                        <p>{{pays}}</p>
+                                        <p>e-mail : {{email}}</p>
+                                        <p>tel : {{tel}}</p>
+                                        {% if entreprise != "" %}
+                                          <p>Entreprise: {{entreprise}}</p>
+                                        {% endif %}
+                                        {% if comments != "" %}
+                                          <p>Précisions: {{comments}}</p>
+                                        {% endif %}
+                    
+                                    </td>
+                                </tr>
+                              {% endif %}
+                        </tfoot>
+                    </table>
+                    <hr>
+                  
+                {% endfor %}
+            {% endif %}
+
+      
+            
+
+
+    {# ================================================= FIN DU CORPS DE LA PAGE ================================================ #}
+    </div>
+</div>
+
+<div class="product-widget-area">
+    <div class="zigzag-bottom"></div>
+</div>
+    
+{% endblock tm_blog_body %}

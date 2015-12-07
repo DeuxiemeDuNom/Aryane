@@ -1,0 +1,57 @@
+{# thaliemero\vendor\knplabs\knp-paginator-bundle\Resources\views\Pagination #}
+
+{# CUSTOM #}
+
+{# default Sliding pagination control implementation #}
+<div class="row">
+    <div class="col-md-12">
+        {% if pageCount > 1 %}
+        <div class="pagination">
+            {% if first is defined and current != first %}
+                <a href="{{ path(route, query|merge({(pageParameterName): first})) }}">
+                    <span class="first">
+                        &lt;&lt;
+                    </span>
+                </a>
+            {% endif %}
+
+            {% if previous is defined %}
+                <a href="{{ path(route, query|merge({(pageParameterName): previous})) }}">
+                    <span class="previous">
+                        &lt;
+                    </span>
+                </a>
+            {% endif %}
+
+            {% for page in pagesInRange %}
+                {% if page != current %}
+                    <a href="{{ path(route, query|merge({(pageParameterName): page})) }}">
+                        <span class="page">
+                            {{ page }}
+                        </span>
+                    </a>
+                {% else %}
+                    <span class="current">{{ page }}</span>
+                {% endif %}
+
+            {% endfor %}
+
+            {% if next is defined %}
+                <a href="{{ path(route, query|merge({(pageParameterName): next})) }}">
+                    <span class="next">
+                        &gt;
+                    </span>
+                </a>
+            {% endif %}
+
+            {% if last is defined and current != last %}
+                <a href="{{ path(route, query|merge({(pageParameterName): last})) }}">
+                    <span class="last">
+                        &gt;&gt;
+                    </span>
+                </a>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</div>

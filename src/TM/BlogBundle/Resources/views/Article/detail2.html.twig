@@ -1,0 +1,103 @@
+{% extends 'TMBlogBundle::layout.html.twig' %}
+
+{% block title %}{{ parent() }} | {{title}}{% endblock title %}
+
+	{% block tm_blog_body %}
+
+	<!-- ==================================================== Début du Corps ==================================================== -->
+    <div class="product-big-title-area under">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="product-bit-title text-center">
+                        <h2>{{title}}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End Page title area -->
+
+
+    <div class="single-product-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                {# =================================================== Sidebar =================================================== #}
+                {{ include("TMBlogBundle:Produit:sidebar.html.twig") }}
+                
+                <div class="col-md-8">
+                    <div class="product-content-right">
+                        <div class="woocommerce">
+                            
+                                <table cellspacing="0" class="shop_table cart">
+                                    <thead>
+                                        <tr>
+                                            <th class="product-remove">&nbsp;</th>
+                                            <th class="product-name">Produits</th>
+                                            <th class="product-name">Description</th>
+                                            <th class="product-quantity">ref</th>
+                                            <th class="product-price">Prix
+                                                <a href="?prix=asc"><i class="fa fa-sort-asc"></i></a>
+                                                <a href="?prix=desc"><i class="fa fa-sort-desc"></i></a>
+                                            </th>
+                                            <th class="product-remove">&nbsp;</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                            {% for article in pagination %}
+                                                <tr class="cart_item">
+
+                                                    <td class="product-thumbnail">
+                                                        <a href="{{path('tm_blog_presentation', {'id': article.id})}}">
+                                                            <img    width="145" 
+                                                                    height="145" 
+                                                                    alt="poster_1_up" 
+                                                                    class="shop_thumbnail" 
+                                                                    src="{{ asset(article.image.webPath) }}"
+                                                                    alt="{{ article.image.alt }}"
+                                                                    title="{{ article.name }}"
+                                                            >
+                                                        </a>
+                                                    </td>
+
+                                                    <td class="product-name">
+                                                        <a href="{{path('tm_blog_presentation', {'id': article.id})}}">{{article.name}}</a> 
+                                                    </td>
+
+                                                    <td class="product-quantity">
+                                                        <span class="amount">{{article.description}}</span>
+                                                    </td>
+
+                                                    <td class="product-quantity">
+                                                        <span class="amount">ref: {{article.ref}}</span>
+                                                    </td>
+
+                                                    <td class="product-quantity">
+                                                        <span class="amount">{{article.price}} €</span>
+                                                    </td>
+
+                                                    <td class="product-subtotal">
+                                                        <a href="{{path('tm_blog_presentation', {'id': article.id})}}" class="custom_btn">Voir</a>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+
+                                    </tbody>
+                                </table>
+                            
+
+                            <div class="cart-collaterals">
+
+                            {# ======================== Fin de la rangée de produits ======================== #}
+                            {{ knp_pagination_render(pagination, 'TMBlogBundle:Article:pagination.html.twig') }}
+
+                            </div>
+                        </div>                        
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+	<!-- ==================================================== fin du Corps ==================================================== -->
+
+	{% endblock tm_blog_body %}

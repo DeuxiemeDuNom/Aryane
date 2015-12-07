@@ -1,0 +1,76 @@
+
+
+{# src/TM/BlogBundle/Resources/views/Article/delete_comment.html.twig #}
+
+{% extends 'TMBlogBundle::layout.html.twig' %}
+
+{% block title %}{{ parent() }} | Supprimer Commentaire{% endblock title %}
+
+{% block tm_blog_body %}
+
+
+<!-- ==================================================== Début du Corps ==================================================== -->
+
+
+<div class="maincontent-area">
+    <br><br><br>
+    <div class="container">
+    {# ==================================================== CORPS DE LA PAGE =================================================== #}
+         
+            <fieldset class="fielding">
+              <legend>
+                <h2 class="dyna">Shut Up !</h2>
+              </legend>
+              <br>
+              <hr>
+              
+              
+                {#=========================================================#}
+
+                    <table class="shop_table cart">
+                      <thead>
+                        <tr>
+                          <th colspan="2">Commentaires</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                          {% if list %}
+                            {% for c in list %}
+                              <tr>
+                                <form action="{{ path('tm_blog_shutup') }}" method="post">
+                                <td>
+                                  {{c.content}}
+                                  <input type="hidden" name="id" value="{{c.id}}">
+                                </td>
+                                <td>
+                                  <input type="submit" value="X" class="btn btn-default" />
+                                </td>
+                                 {% if form %}
+                                  {{ form_rest(form) }}
+                                 {% endif %}
+                                </form>
+                            </tr>
+                            {% endfor %}
+                          {% endif %}
+                      </tbody>
+                    </table>
+
+                {#=========================================================#}
+                
+               
+            </fieldset>
+            
+
+
+    {# ================================================= FIN DU CORPS DE LA PAGE ================================================ #}
+    </div>
+</div>
+
+<div class="product-widget-area">
+    <div class="zigzag-bottom"></div>
+</div>
+    
+
+<!-- ==================================================== fin du Corps ==================================================== -->
+
+{% endblock tm_blog_body %}

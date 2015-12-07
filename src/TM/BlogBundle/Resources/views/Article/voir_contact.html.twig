@@ -1,0 +1,67 @@
+{# src/TM/BlogBundle/Resources/views/Article/voir_contact.html.twig #}
+
+{% extends "TMBlogBundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }} | Correspondance{% endblock title %}
+
+{% set name = 'thaliemero.fr' %}
+{% set hebergeur = 'https://www.phpnet.org/' %}
+{% set url = app.request.baseUrl %}
+
+{% block tm_blog_body %}
+
+
+<div class="jumbotron transpa">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8 col-lg-offset-1 corp">
+        <div class="corp-bg">
+          
+
+          <h2 class="dyna" style="color:#A31658">Correspondance</h2><br />
+
+		        {% if pagination.getTotalItemCount <= 1 %}
+					<h2 style="color:black">{{ pagination.getTotalItemCount }} commentaire</h2><br />
+				{% else %}
+					<h2 style="color:black">{{ pagination.getTotalItemCount }} commentaires</h2><br />
+				{% endif %}
+
+				<ul>
+					{% for commentaire in pagination %}
+					  <li>
+					      <div class="letter">
+					        <p align="right">le {{ commentaire.date|date('d/m/Y') }}</p>
+					        {% if commentaire.email is not null %}
+					        	<h5 align="right">(Mon adresse mail: <a href="mailto:{{commentaire.email}}">{{commentaire.email}}</a>)</h5>
+					        {% endif %}
+					        <p>{{ commentaire.comment }} </p>
+					        <p align="right">signé: {{commentaire.name}} </p>
+					      </div>
+					  </li>
+					{% else %}
+					  <li><p>Hmm... C'est un peu vide, ici !</p></li>
+					{% endfor %}
+				</ul>
+
+				{# class="pagination page_custm" #}
+				<div class="navigation">
+				    {{ knp_pagination_render(pagination, 'TMBlogBundle:Article:pagination.html.twig') }}
+				</div>
+
+
+            <br>
+            <hr>
+            <p>
+              <a href="{{ path('tm_blog_home') }}" class="btn btn-default">
+                <i class="glyphicon glyphicon-home"></i>
+                Retour à l'accueil
+              </a>
+            </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock tm_blog_body %}

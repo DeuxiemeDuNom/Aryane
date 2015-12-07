@@ -1,0 +1,74 @@
+{# src/TM/BlogBundle/Resources/views/Article/form_contact.html.twig #}
+
+<div class="well">
+  {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+    {# Les erreurs générales du formulaire. #}
+    {{ form_errors(form, {'attr': {'class': 'erreur'}}) }}
+    {{ form_errors(form.name, {'attr': {'class': 'erreur'}}) }}
+    {{ form_errors(form.email, {'attr': {'class': 'erreur'}}) }}
+    {{ form_errors(form.subject, {'attr': {'class': 'erreur'}}) }}
+    {{ form_errors(form.comment, {'attr': {'class': 'erreur'}}) }}
+    
+
+    {# Idem pour un autre champ. #}
+    <div class="form-group">
+      {{ form_label(form.name, "Nom", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      <div class="col-sm-8">
+        {% if app.user %}
+          {{ form_widget(form.name, {'attr': {'class': 'form-control', 'value': app.user.username}}) }}
+          {% else %}
+            {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+        {% endif %}
+      </div>
+    </div>
+    {#==========================================================================#}
+
+    {# Idem pour un autre champ. #}
+    <div class="form-group">
+      {{ form_label(form.email, "Adresse mail", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      <div class="col-sm-8">
+        {% if app.user %}
+          {{ form_widget(form.email, {'attr': {'class': 'form-control', 'value': app.user.email}}) }}
+          {% else %}
+            {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+        {% endif %}
+      </div>
+    </div>
+    {#==========================================================================#}
+
+     {# Idem pour un autre champ. #}
+    <div class="form-group">
+      {{ form_label(form.subject, "Sujet", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      <div class="col-sm-8">
+        {{ form_widget(form.subject, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+    {#==========================================================================#}
+
+    {# Idem pour un autre champ. #}
+    <div class="form-group">
+      {{ form_label(form.comment, "Message", {'label_attr': {'class': 'col-sm-3 control-label', 'rows': 10}}) }}
+      <div class="col-sm-8">
+        {{ form_widget(form.comment, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+    {#==========================================================================#}
+
+
+    {# Idem pour un autre champ. #}
+    {{ form_widget(form.save, {'attr': {'class': 'btn btn-lg btn-primary btn-block'}}) }}
+    {#==========================================================================#}
+
+
+  
+
+  {# Génération automatique des champs pas encore écrits.
+     Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
+     et tous les champs cachés (type « hidden »). #}
+  {{ form_rest(form) }}
+  
+  {# Fermeture de la balise <form> du formulaire HTML #}
+  {{ form_end(form) }}
+  {#{{ dump(form.date) }}#}
+</div>

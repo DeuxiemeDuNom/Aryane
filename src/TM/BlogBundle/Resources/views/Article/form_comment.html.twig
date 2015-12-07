@@ -1,0 +1,67 @@
+{# src/TM/BlogBundle/Resources/views/Article/form.html.twig #}
+
+<div class="well">
+  {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+    {% if not form.vars.valid %}
+      <div class="erreur">
+        {# Les erreurs générales du formulaire. #}
+        {{ form_errors(form, {'attr': {'class': 'erreur'}}) }}
+        {{ form_errors(form.user, {'attr': {'class': 'erreur'}}) }}
+        {{ form_errors(form.article, {'attr': {'class': 'erreur'}}) }}
+        {{ form_errors(form.content, {'attr': {'class': 'erreur'}}) }}
+      </div>
+    {% endif %}
+
+    {# Idem pour un autre champ. #}
+    <div class="form-group">
+      {{ form_label(form.content, "Commentaire", {'label_attr': {'class': 'col-sm-3 control-label', 'rows': 7}}) }}
+      <br>
+      <br>
+      <div class="col-sm-12">
+        {{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+    {#==========================================================================#}
+
+
+    {# Idem pour un autre champ. #}
+    <div class="form-group">
+      {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+      <div class="col-sm-8 clear_form">
+        {{ form_widget(form.save, {'attr': {'class': 'custom_btn'}}) }}
+      </div>
+    </div>
+    {#==========================================================================#}
+
+
+  
+
+  {# Génération automatique des champs pas encore écrits.
+     Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
+     et tous les champs cachés (type « hidden »). #}
+  {{ form_rest(form) }}
+  {# Fermeture de la balise <form> du formulaire HTML #}
+  {{ form_end(form) }}
+  {#{{ dump(form.date) }}#}
+</div>
+
+{#
+<div class="submit-review">
+    <p><label for="name">Name</label> <input name="name" type="text"></p>
+    <p><label for="email">Email</label> <input name="email" type="email"></p>
+    <div class="rating-chooser">
+        <p>Your rating</p>
+
+        <div class="rating-wrap-post">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+        </div>
+    </div>
+    <p><label for="review">Your review</label> <textarea name="review" id="" cols="30" rows="10"></textarea></p>
+    <p><input type="submit" value="Submit"></p>
+</div>
+#}

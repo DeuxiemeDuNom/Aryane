@@ -1,0 +1,34 @@
+{% extends 'TMBlogBundle::layout.html.twig' %}
+
+{% block title %}{{ parent() }} | Contact{% endblock title %}
+
+{% block tm_blog_body %}
+
+<div class="maincontent-area">
+    <br><br><br>
+    <div class="container">
+    {# ==================================================== CORPS DE LA PAGE =================================================== #}
+           <div class="row">
+             <div class="col-md-6 col-md-offset-3">
+               <fieldset class="fielding">
+                  <legend>
+                      <h1 class="dyna">Quelque chose a nous dire ?</h1>
+                  </legend>
+                  {{ include("TMBlogBundle:Article:form_contact.html.twig") }}
+              </fieldset>
+             </div>
+           </div>
+
+
+            
+
+
+    {# ================================================= FIN DU CORPS DE LA PAGE ================================================ #}
+    </div>
+</div>
+
+<div class="product-widget-area">
+    <div class="zigzag-bottom"></div>
+</div>
+    
+{% endblock tm_blog_body %}

@@ -1,0 +1,71 @@
+<div class="header-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 pull-right">
+                <div class="user-menu pull-right">
+                    <ul>
+                        {# ======================== UTILISATEUR CONNECTE ======================== #}
+                        {% if app.user is not null and is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+                            <li><a href="{{path('fos_user_profile_show')}}"><i class="fa fa-user"></i> {{app.user.username|capitalize}}</a></li>
+                            <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-user"></i> {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
+                            <li><a href="{{ path('tm_blog_ciao') }}"><i class="fa fa-user"></i> Supprimer mon profil</a></li>
+
+                        {# ======================== UTILISATEUR NON CONNECTE ======================== #}
+                        {% else %}
+
+                            <li><a href="{{ path('fos_user_security_login') }}"><i class="fa fa-user"></i> {{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a></li>
+                            <li><a href="{{ path('fos_user_registration_register') }}"><i class="fa fa-user"></i> {{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a></li>
+                        
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- End header area -->
+
+<div class="site-branding-area adjustment">
+    <div class="container">
+        <div class="row hop">
+            <div class="col-sm-4">
+                <div class="logo">
+                    <h1><a href="{{path('tm_blog_home')}}"><span>Aryane</span></a></h1>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                {# ================ Controller de la session panier et de son contenu ================ #}
+                {{ render(controller('TMBlogBundle:Header:panier')) }}
+            </div>
+            <div class="col-sm-4 col-md-offset-1">
+                {# ================ Controller de la session panier et de son contenu ================ #}
+                {{ render(controller('TMBlogBundle:Nav:menu')) }}
+            </div>
+            
+        </div>
+
+        {% for flash in app.session.flashbag.get('success') %}
+            <br>
+            {% if flash.msg is defined %}
+                <h4 class="alert alert-success">{{ flash.msg }}</h4>
+            {% elseif flash.message is defined %}
+                <h4 class="alert alert-success">{{ flash.message }}</h4>
+            {% endif %}
+        {% endfor %}
+
+        {% for flash in app.session.flashbag.get('error') %}
+            <br>
+            <h4 class="alert alert-{{ flash.type }}">{{ flash.msg }}</h4>
+        {% endfor %}
+
+        {% if app.session.flashbag.all() %}
+        {% for type, messages in app.session.flashbag.all() %}
+            {% for message in messages %}
+                <div class="flash-{{ type }}">
+                    <h4 class="alert alert-info">{{ message }}</h4>
+                </div>
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+    </div>
+</div> <!-- End site branding area -->

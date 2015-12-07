@@ -1,0 +1,135 @@
+{# src/TM/BlogBundle/Resources/views/Article/legal.html.twig #}
+
+{% extends "TMBlogBundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }} | Mentions légales{% endblock title %}
+
+{% set name = 'Aryane' %}
+{% set hebergeur = 'https://www.ovh.com/fr/' %}
+{% set linkedin = 'https://fr.linkedin.com/pub/martial-etoka/99/586/34' %}
+{% set url = app.request.baseUrl %}
+
+{% block tm_blog_body %}
+
+ <div class="product-big-title-area under">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-bit-title text-center">
+                    <h2>Mentions légales</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="maincontent-area">
+    <br><br><br>
+    <div class="container">
+    {# ==================================================== CORPS DE LA PAGE =================================================== #}
+            <h2 class="dyna" style="color:#E0837E">- Mentions légales -</h2><br />
+
+          {# ============================================= Div légal ============================================= #}
+          <div class="legal">
+              
+            <br><h3>Directeur de la Publication :</h3>
+
+            <div class="paragraph">
+              <p>
+                Le présente démo est éditée par Martial ETOKA:
+              </p>
+              <p>
+                lien <a href="{{linkedin}}" target="_blank">Linkedin</a>
+              </p>
+              
+
+              <p>Raison Sociale de l’Hébergeur :</p>
+
+              <a href="{{hebergeur}}" target="_blank">
+                <p>OVH</p>
+              </a>
+
+              <p>
+                2 Rue Kellermann
+                59100 Roubaix
+                Tél : +33 9 72 10 10 07
+
+                
+              </p>
+              <p>
+                <a href="https://www.ovh.com/fr/support/" target="_blank">Support</a>
+              </p>
+
+            </div>
+
+
+            <br><h3>Logo, charte graphique  :</h3>
+
+            <div class="paragraph">
+              <p>
+                Le logo, et la charte graphique de ce site sont propriété de la commune de {{name}}. Toute reproduction totale ou partielle de cette marque sans autorisation préalable et écrite est prohibée. Toute modification des proportions, couleurs, éléments et constituants est strictement interdite.
+              </p>
+            </div>
+
+            <br><h3>Source des images :</h3>
+
+            <div class="paragraph">
+              <p>
+                Les images présentes sur le site {{name}} proviennent de <a href="https://pixabay.com/" target="_blank">pixabay.com</a> et sont à usage libre.
+              </p>
+            </div>
+
+            <br><h3>Avertissement général :</h3>
+
+            <div class="paragraph">
+              <p>
+                La consultation du blog {{name}} est proposée aux internautes à titre gratuit et sans aucune garantie de la part de son éditeur.
+
+                Les informations disponibles sur {{name}} qui proviennent de sources extérieures ne saurait garantir qu’elles sont exemptes d’erreurs, ni garantir leur complétude, leur actualité, leur exhaustivité ou autre.
+                En conséquence, il appartient à l’internaute d’utiliser les informations figurant sur le site Internet à ses risques et de procéder à toute vérification sous sa responsabilité exclusive.
+
+                {{name}} ne serait être tenu responsable de l’interprétation faite par les internautes, quelle qu’elle soit, de tous les blagues dissimulées et des conséquences pouvant en découler.
+
+                Les réseaux sociaux consultés à partir d'{{name}} sont sans aucuns liens avec ce dernier. Ce site est à but démonstratif.
+
+                {{name}} ne serait être tenu responsable de tous problèmes rencontrés sur un site consulté à partir d'{{name}}.
+              </p>
+            </div>
+
+            <br><h3>Utilisation de Cookies :</h3>
+
+            <div class="paragraph">
+              <p>
+                {{name}} vous informe qu’un ou plusieurs cookies (petits fichiers textes) peuvent s’installer automatiquement sur le disque dur de votre ordinateur lors de votre visite sur le blog {{name}}. Ces cookies n'ont aucun but statistique.
+
+                Vous avez la possibilité de supprimer les cookies installés lors de votre visite sur le blog {{name}}, à l’aide de la barre d’outils de votre navigateur. La suppression des cookies devra intervenir une fois votre navigation sur le blog {{name}} terminée.
+              </p>
+            </div>
+
+          </div>
+          {# ============================================= Fin Div légal ============================================= #}
+
+
+            <br>
+            <hr>
+            <p>
+              <a href="{{ path('tm_blog_home') }}" class="btn btn-default">
+                <i class="glyphicon glyphicon-home"></i>
+                Retour à l'accueil
+              </a>
+            </p>
+
+
+
+            
+
+
+    {# ================================================= FIN DU CORPS DE LA PAGE ================================================ #}
+    </div>
+</div>
+
+<div class="product-widget-area">
+    <div class="zigzag-bottom"></div>
+</div>
+    
+{% endblock tm_blog_body %}

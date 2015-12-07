@@ -1,0 +1,234 @@
+{% extends 'TMBlogBundle::layout.html.twig' %}
+
+{% block title %}{{ parent() }} | Accueil{% endblock title %}
+
+{% block tm_blog_body %}
+ 
+    <div class="slider-area under">
+        <div class="zigzag-bottom"></div>
+        <div id="slide-list" class="carousel carousel-fade slide" data-ride="carousel">
+            
+            <div class="slide-bulletz">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ol class="carousel-indicators slide-indicators">
+                                <li data-target="#slide-list" data-slide-to="0" class="active"></li>
+                                <li data-target="#slide-list" data-slide-to="1"></li>
+                                <li data-target="#slide-list" data-slide-to="2"></li>
+                            </ol>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <div class="single-slide">
+                        <div class="slide-bg slide-one"></div>
+                        <div class="slide-text-wrapper">
+                            <div class="slide-text">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-6 col-md-offset-6">
+                                            <div class="slide-content">
+                                                {% if app.user is not null and is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                                    <h2>Bienvenue, {{app.user.username|capitalize}} !</h2>
+                                                    <p>Si vous pouvez lire ceci, c'est que vous avez créé un profil et décidé de voir ce que ce site vous réservait...</p>
+                                                   
+                                                {% else %}
+                                                    <h2>Bienvenue !</h2>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, dolorem, excepturi. Dolore aliquam quibusdam ut quae iure vero exercitationem ratione!</p>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi ab molestiae minus reiciendis! Pariatur ab rerum, sapiente ex nostrum laudantium.</p>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="single-slide">
+                        <div class="slide-bg slide-two"></div>
+                        <div class="slide-text-wrapper">
+                            <div class="slide-text">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-6 col-md-offset-6">
+                                            <div class="slide-content">
+                                                {% if app.user is not null and is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                                    <h3>Démo</h3>
+                                                    <p>Ceci est donc une démo créée à l'aide de différents frameworks PHP, CSS, et Javascript (à savoir, Symfony2, Bootstrap et Jquery)...</p>
+                                                   
+                                                {% else %}
+                                                    <h2>Watch me whip...</h2>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, dolorem, excepturi. Dolore aliquam quibusdam ut quae iure vero exercitationem ratione!</p>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi ab molestiae minus reiciendis! Pariatur ab rerum, sapiente ex nostrum laudantium.</p>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="single-slide">
+                        <div class="slide-bg slide-three"></div>
+                        <div class="slide-text-wrapper">
+                            <div class="slide-text">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-6 col-md-offset-6">
+                                            <div class="slide-content">
+                                                {% if app.user is not null and is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                                    <h3>Harder, Better, Faster, Stronger...</h3>
+                                                    <p>Comme l'a si bien dit Confucius : "L'on devient moins junior de jours en jours..." (je crois bien que c'est de lui...).</p>
+                                                   
+                                                {% else %}
+                                                    <h2>...Watch me nae nae!</h2>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, dolorem, excepturi. Dolore aliquam quibusdam ut quae iure vero exercitationem ratione!</p>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi ab molestiae minus reiciendis! Pariatur ab rerum, sapiente ex nostrum laudantium.</p>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>        
+    </div> <!-- End slider area -->
+    
+    <div class="promo-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="single-promo">
+                        <i class="fa fa-refresh"></i>
+                        <p>Echange 30 jours</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="single-promo">
+                        <i class="fa fa-truck"></i>
+                        <p>Livraison gratuite</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="single-promo">
+                        <i class="fa fa-lock"></i>
+                        <p>Paiements sécurisés</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="single-promo">
+                        <i class="fa fa-gift"></i>
+                        <p>Cadeaux explosifs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End promo area -->
+    
+    <div class="maincontent-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="latest-product">
+                        <h2 class="section-title">Derniers Produits</h2>
+                        <div class="product-carousel">
+                            {#============================= Boucle Produit individuel =============================#}
+                            {% for last in lasts %}
+                                
+                                <div class="single-product">
+                                    <div class="product-f-image">
+                                        <img 
+                                            src="{{ asset(last.image.webPath) }}"
+                                            alt="{{ last.image.alt }}"
+                                        >
+                                        <div class="product-hover">
+                                                {% if last.id not in incart %}
+
+                                                <a  href="{{path('tm_blog_fill', {'id': last.id, 'name': last.name, 'price': last.price, 'name': last.name})}}" 
+                                                    class="add-to-cart-link"
+                                                >
+                                                    <i class="fa fa-shopping-cart"></i> Ajouter au panier
+                                                </a>
+                                                {% endif %}
+                                            <a href="{{path('tm_blog_presentation', {'id': last.id})}}" class="view-details-link"><i class="fa fa-link"></i> Voir les détails</a>
+                                        </div>
+                                    </div>
+                                    
+                                    <h2><a href="{{path('tm_blog_presentation', {'id': last.id})}}">{{last.name}}</a></h2>
+                                    
+                                    <div class="product-carousel-price">
+                                        <ins>{{last.price}} €</ins> <del>{{last.price}} €</del>
+                                    </div> 
+                                </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End main content area -->
+    
+    <div class="brands-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="brand-wrapper">
+                        <h2 class="section-title">Marques</h2>
+                        <div class="brand-list">
+                            <img src="{{asset('bundles/tmblog/img/logo_1.png')}}" alt="logo1">
+                            <img src="{{asset('bundles/tmblog/img/logo_2.png')}}" alt="logo2">
+                            <img src="{{asset('bundles/tmblog/img/logo_3.png')}}" alt="logo3">
+                            <img src="{{asset('bundles/tmblog/img/logo_4.png')}}" alt="logo4">                          
+                            <img src="{{asset('bundles/tmblog/img/logo_5.png')}}" alt="logo5">                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End brands area -->
+    
+    <div class="product-widget-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="single-product-widget">
+                        <h2 class="product-wid-title">Top des ventes</h2>
+                        <a href="{{path('tm_blog_fullsell')}}" class="wid-view-more">Tout voir</a>
+                        {{ render(controller('TMBlogBundle:Top:sell')) }}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="single-product-widget">
+                        <h2 class="product-wid-title">Nouveauté</h2>
+                        <a href="{{path('tm_blog_fullnew')}}" class="wid-view-more">Tout voir</a>
+                        {{ render(controller('TMBlogBundle:Top:new')) }}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="single-product-widget">
+                        <h2 class="product-wid-title">Commentaires</h2>
+                        {{ render(controller('TMBlogBundle:Top:recent')) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End product widget area -->
+
+{% endblock tm_blog_body %}

@@ -1,0 +1,49 @@
+{% if tops %}
+    {% for top in tops %}
+        <div class="single-wid-product">
+            <a href="{{path('tm_blog_presentation', {'id': top.id})}}">
+                <img    src="{{ asset(top.image.webPath) }}"
+                        alt="{{ top.image.alt }}"
+                        class="top-thumb">
+            </a>
+            <h2><a href="{{path('tm_blog_presentation', {'id': top.id})}}">{{top.name}} </a></h2>
+            <h5>Ref : {{top.ref}}</h5>
+            <h5><a href="{{ path('tm_blog_detail', {'cat': top.subcategory.category.name, 
+                                                    'subcat': top.subcategory.name}) }}"> - {{top.subcategory.name}} - </a></h5>
+            {#
+            <div class="product-wid-rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+            </div>
+            #}
+            <div class="product-wid-price">
+                <ins>{{top.price}} €</ins> <del>{{top.price|promo(10)}} €</del>
+            </div>                            
+        </div>
+    {% endfor %}
+{% endif %}
+
+
+{% if commentaires %}
+    <div class="single-wid-product">
+        <ul>
+            {% for commentaire in commentaires %}
+              <li>
+                <p>De {{commentaire.user.username}}, Le {{commentaire.date|date("d/m/Y à H:i")}}</p>
+                <p>
+                    A propos de : <a href="{{path('tm_blog_presentation', {'id': commentaire.article.id})}}">{{commentaire.article.name}}</a>
+                </p>
+                <p>
+                    <i>
+                      “{{commentaire.content}}”
+                    </i>
+                </p>
+                <hr>
+              </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}

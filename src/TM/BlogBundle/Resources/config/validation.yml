@@ -1,0 +1,61 @@
+# src/TM/BlogBundle/Resources/config/validation.yml
+TM\BlogBundle\Entity\Article:
+    properties:
+        ref:
+            - Type:
+                type: numeric
+                message: "Erreur : {{ value }} contient des lettres et n'accepte que des chiffres."
+        description:
+            - NotBlank:
+                message: "Hmm... la description est un peu vide, non?"
+            - Length:
+                min: 2
+                max: 140
+                minMessage: "Votre description doit faire au moins {{ limit }} caractères"
+                maxMessage: "Votre description ne doit pas faire plus de {{ limit }} caractères (comme sur twitter, en gros...)"
+
+TM\BlogBundle\Entity\Contact:
+    properties:
+        email:
+            - NotBlank:
+                message: "Hmm... c'est un peu vide, non?"
+            - Email:
+                message: "'{{ value }}' n'est pas un email valide."
+                checkMX: true
+        subject:
+            - NotBlank:
+                message: "Hmm... c'est un peu vide, non?"
+            - Length:
+                min: 2
+                max: 50
+                minMessage: "Votre nom doit faire au moins {{ limit }} caractères"
+                maxMessage: "Votre nom ne peut pas être plus long que {{ limit }} caractères"
+
+        comment:
+            - NotBlank:
+                message: "Hmm... c'est un peu vide, non?"
+            - Length:
+                min: 2
+                max: 350
+                minMessage: "Votre nom doit faire au moins {{ limit }} caractères"
+                maxMessage: "Votre nom ne peut pas être plus long que {{ limit }} caractères"
+
+        name:
+            - NotBlank:
+                message: "Saisissez votre nom, svp..."
+            - Length:
+                min: 2
+                max: 50
+                minMessage: "Votre nom doit faire au moins {{ limit }} caractères"
+                maxMessage: "Votre nom ne peut pas être plus long que {{ limit }} caractères"
+
+TM\BlogBundle\Entity\Comment:
+    properties:
+        content:
+            - NotBlank:
+                message: "Hmm... la description est un peu vide, non?"
+            - Length:
+                min: 3
+                max: 140
+                minMessage: "Votre description doit faire au moins {{ limit }} caractères"
+                maxMessage: "Votre description ne doit pas faire plus de {{ limit }} caractères (comme sur twitter, en gros...)"

@@ -1,0 +1,32 @@
+<div class="cross-sells">
+    {% if autres %}
+        <h2>Ça vous dit ?</h2> {# Ç = ALT + 128 #}
+        <ul class="products">
+
+          {% for article in autres %}
+
+            <li class="product">
+                <a href="{{path('tm_blog_presentation', {'id': article.id})}}">
+                    <img width="325" height="325" alt="T_4_front" class="attachment-shop_catalog wp-post-image" src="{{ asset(article.image.webPath) }}" alt="{{ article.image.alt }}">
+                    <h3>{{article.name}}</h3>
+                    <span class="price"><span class="amount">{{article.price}} € <del>{{article.price|promo(10)}} €</del></span></span>
+                </a>
+
+                {% if article.id in incart %}
+                    <a class="is_in_cart_button" href="{{path('tm_blog_presentation', {'id': article.id})}}">Déjà dans votre panier</a>
+                {% else %}
+                    <a  class="add_to_cart_button" 
+                        data-quantity="1" 
+                        data-product_sku="" 
+                        data-product_id="22" 
+                        rel="nofollow" 
+                        href="{{path('tm_blog_fill', {'id': article.id, 'name': article.name, 'price': article.price, 'name': article.name})}}">Ajouter au panier
+                    </a>
+                {% endif %}
+            </li>
+
+          {% endfor %}
+
+        </ul>
+    {% endif %}
+</div>

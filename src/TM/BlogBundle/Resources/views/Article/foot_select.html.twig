@@ -1,0 +1,5 @@
+<ul>
+	{% for cat in footCats %}
+		<li><a href="{{ path('tm_blog_detail', {'cat': cat.category.name, 'subcat': cat.name}) }}">{{cat.name}}</a></li>
+	{% endfor %}
+</ul>

@@ -1,0 +1,25 @@
+{% if panier is not empty %}
+
+	{% set qte = 0 %}
+	{% set total = 0 %}
+
+	{% for art in panier %}
+		{% set qte = qte + art.qte %}
+
+		{% set total = total + (art.price * art.qte)  %}
+
+	{% endfor %}
+
+
+	    	<div class="shopping-item">
+		        <i class="fa fa-shopping-cart"></i> Panier - <span class="cart-amunt">{{total}} €</span> 
+		        	 <span class="product-count">{{qte}} </span>
+		    	<br>
+		    	<br>
+		    	<a href="{{path('tm_blog_empty')}}" class="btn btn-default wide">Vider</a>
+		    	<a href="{{path('tm_blog_panier')}}" class="btn btn-default wide pull-right">Voir</a>
+		    </div>
+		    <br><br>
+{% else %}
+<p>&nbsp;</p>
+{% endif %}

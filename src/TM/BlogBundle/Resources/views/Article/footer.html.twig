@@ -1,0 +1,69 @@
+<div class="footer-top-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="footer-about-us">
+                    <h2><span>Aryane</span></h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus vero quam laborum quas alias dolores blanditiis iusto consequatur, modi aliquid eveniet eligendi iure eaque ipsam iste, pariatur omnis sint! Suscipit, debitis, quisquam. Laborum commodi veritatis magni at?</p>
+                    <div class="footer-social">
+                        <a href="https://fr-fr.facebook.com/MASSEFFECTFRANCE/" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a href="https://twitter.com/masseffect" target="_blank"><i class="fa fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/watch?v=Rn98FdSg-Fo" target="_blank"><i class="fa fa-youtube"></i></a>
+                        <a href="https://www.linkedin.com/company/bioware" target="_blank"><i class="fa fa-linkedin"></i></a>
+                        <a href="https://www.pinterest.com/PlayingTurtle/mass-effect/" target="_blank"><i class="fa fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-3 col-sm-6">
+                <div class="footer-menu">
+                    <h2 class="footer-wid-title">Navigation</h2>
+                    <ul>
+                        {% if app.user is not null and is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+							<li><a href="{{path('fos_user_profile_show')}}">Profil</a></li>
+						{% endif %}
+                        <li><a href="{{path('tm_blog_legal')}}">Mentions Légales</a></li>
+                        <li><a href="{{path('tm_blog_about')}}">A propos</a></li>
+                        <li><a href="{{path('tm_blog_contact')}}">Contact</a></li>
+                        <li><a href="{{path('tm_blog_home')}}">Accueil</a></li>
+                    </ul>                        
+                </div>
+            </div>
+            
+            <div class="col-md-3 col-sm-6">
+                <div class="footer-menu">
+                    <h2 class="footer-wid-title">Catégories</h2>
+                    {{ render(controller('TMBlogBundle:FootSelect:Select')) }}
+                </div>
+            </div>
+            
+            <div class="col-md-3 col-sm-6">
+                <div class="footer-newsletter">
+                    <h2 class="footer-wid-title">Développeur</h2>
+                    <p>Plus d'info sur le "coupable" à cette <a href="https://www.linkedin.com/pub/martial-etoka/99/586/34" target="_blank">adresse</a> !</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer-bottom-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="copyright">
+                    <p>&copy; {{ "now"|date("Y") }} Aryane. Tous droits réservés. Template par <a href="http://wpexpand.com" target="_blank">WP Expand</a>.</p>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="footer-card-icon">
+                    <i class="fa fa-cc-discover"></i>
+                    <i class="fa fa-cc-mastercard"></i>
+                    <i class="fa fa-cc-paypal"></i>
+                    <i class="fa fa-cc-visa"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

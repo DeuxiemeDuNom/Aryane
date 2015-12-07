@@ -1,0 +1,32 @@
+{% for article in autres %}
+
+   <div class="single-product">
+    <div class="product-f-image">
+          <img
+            src="{{ asset(article.image.webPath) }}"
+            alt="{{ article.image.alt }}"
+          />
+        <div class="product-hover">
+          {% if article.id not in incart %}
+            <a href="{{path('tm_blog_fill', {'id': article.id, 'name': article.name, 'price': article.price, 'name': article.name})}}" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Ajouter au panier</a>
+          {% endif %}
+
+            <a href="{{path('tm_blog_presentation', {'id': article.id})}}" class="view-details-link"><i class="fa fa-link"></i> Voir les détails</a>
+        </div>
+    </div>
+
+    <h2><a href="{{path('tm_blog_presentation', {'id': article.id})}}">{{article.name}} </a></h2>
+    <h5>ref: {{article.ref}}</h5>
+    {% if app.user is not null and is_granted("ROLE_ADMIN") %}
+      <a class="custom_btn" href="{{path('tm_blog_edit', {'id': article.id})}} ">Modifier</a>
+      <a class="custom_btn" href="{{path('tm_blog_delete', {'id': article.id})}} ">X</a>
+    {% endif %}
+
+    <br>
+    <br>
+    <div class="product-carousel-price">
+        <ins>{{article.price}} €</ins> <del>{{article.price|promo(10)}} €</del>
+    </div> 
+</div>
+
+{% endfor %}

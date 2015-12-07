@@ -1,0 +1,115 @@
+{% extends 'TMBlogBundle::layout.html.twig' %}
+
+{% block title %}{{ parent() }} | {{title}}{% endblock title %}
+
+{% block tm_blog_body %}
+
+<!-- ==================================================== Début du Corps ==================================================== -->
+
+<div class="product-big-title-area under">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-bit-title text-center">
+                    <h2>{{title}}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+    <div class="single-product-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+
+              {% if new_search is defined %}
+                <div class="jumbotron">
+                  <div class="container-fluid">
+                      <h2 class="sidebar-title">Chercher un autre produit</h2>
+                      <form action="{{path('tm_blog_search')}}" method="get">
+                          <input type="text" name="keyword" placeholder="Rechercher un produit...">
+                          <input type="submit" value="Rechercher">
+                      </form>
+                  </div>
+                </div>
+              {% endif %}
+
+              {% if pagination is empty %}
+                <br>
+                <br>
+                <br>
+                <div class="jumbotron">
+                      
+                        <div class="container">
+                          <br>
+                          <br>
+                          <br>
+                          <p>Aucun produit dans cette catégorie pour le moment.</p>
+                          <br>
+                          <a class="btn btn-default" href="{{path('tm_blog_home')}} "><span class="glyphicon glyphicon-home"></span> Retour à l'accueil</a>
+                          <br>
+                          <br>
+                        </div>
+                      
+                  </div>
+                  <br>
+                  <br>
+                  <br>
+
+              {% else %}
+                {# ================================ Boucle des articles ================================ #}
+                {% for article in pagination %}
+                    <div class="col-md-3 col-sm-6">
+                      <div class="single-shop-product swim">
+                          <div class="product-upper">
+                              <a href="{{path('tm_blog_presentation', {'id': article.id})}}">
+                                <img
+                                  src="{{ asset(article.image.webPath) }}"
+                                  alt="{{ article.image.alt }}"
+                                />
+                              </a>
+                          </div>
+                          <h2><a href="{{path('tm_blog_presentation', {'id': article.id})}}">{{article.name}} </a></h2>
+                          <div class="product-carousel-price">
+                              <ins>{{article.price}} €</ins> <del>{{article.price|promo(10)}} €</del>
+                          </div>
+                          
+                          <div class="product-option-shop">
+                            {% if app.user is not null and is_granted("ROLE_ADMIN") %}
+                              <a class="add_to_cart_button" href="{{path('tm_blog_edit', {'id': article.id})}} ">Modifier</a>
+                              <a class="add_to_cart_button" href="{{path('tm_blog_delete', {'id': article.id})}} ">X</a>
+                            {% endif %}
+                          </div>
+
+                          <div class="product-option-shop">
+                              {% if article.id in incart %}
+                                <a  class="is_in_cart_button"
+                                    data-quantity="1"
+                                    rel="nofollow" 
+                                    href="{{path('tm_blog_panier')}}">Actuellement dans le panier
+                                </a>
+                              {% else %}
+                                <a  class="add_to_cart_button" 
+                                    data-quantity="1"
+                                    rel="nofollow" 
+                                    href="{{path('tm_blog_fill', {'id': article.id, 'name': article.name, 'price': article.price})}}">Ajouter au panier
+                                </a>
+                              {% endif %}
+                          </div>                       
+                      </div>
+                  </div>
+                {% endfor %}
+
+              {% endif %}
+            </div>
+            {# ======================== Fin de la rangée de produits ======================== #}
+            {{ knp_pagination_render(pagination, 'TMBlogBundle:Article:pagination.html.twig') }}
+            
+
+          </div>
+        </div>
+
+{% endblock tm_blog_body %}
+

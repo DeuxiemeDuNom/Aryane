@@ -1,0 +1,7 @@
+{% if status_code == 500 %}
+    {% include 'TwigBundle:Exception:error500.html.twig' %}
+{% elseif status_code == 404 %}
+    {% include 'TwigBundle:Exception:error404.html.twig' %}
+{% else %}
+    {% include 'TwigBundle:Exception:exception.html.twig' %}
+{% endif %}

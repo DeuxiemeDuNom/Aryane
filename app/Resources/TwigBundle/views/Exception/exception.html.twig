@@ -1,0 +1,86 @@
+{# src/TM/TMBlogBundle/Resources/TwigBundle/views/Exception/error.html.twig #}
+
+{% extends 'TMBlogBundle::layout.html.twig' %}
+
+{% block title %}{{ parent() }} | Erreur {{ status_code }}{% endblock title %}
+
+{% block tm_blog_body %}
+
+ <div class="product-big-title-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-bit-title text-center">
+                    <h2>{{status_code}}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="maincontent-area">
+    <br><br><br>
+    <div class="container">
+    {# ==================================================== CORPS DE LA PAGE =================================================== #}
+          
+        <div class="legal">
+          <h2 class="dyna">Hmm... Il y a comme un problème! : [Exception]</h2>
+          <div class="text-exception">
+
+            <div class="paragraph">
+              {% if app.user is not null and is_granted("ROLE_ADMIN") %}
+              <h3>
+                  [ADMIN] {{ exception.message|nl2br|format_file_from_text }}
+              </h3>
+              {% endif %}
+              <h3>
+                Nous rencontrons un problème sur le serveur.
+              </h3>
+            </div>
+
+            {# =================================================================================================== #}
+            {% if app.user is not null and is_granted('ROLE_ADMIN') %}
+                    <div>
+                        <strong>{{ status_code }}</strong> {{ status_text }} - {{ exception.class|abbr_class }}
+                    </div>
+
+                    {% set previous_count = exception.allPrevious|length %}
+                    {% if previous_count %}
+                        <div class="linked"><span><strong>{{ previous_count }}</strong> linked Exception{{ previous_count > 1 ? 's' : '' }}:</span>
+                            <ul>
+                                {% for i, previous in exception.allPrevious %}
+                                    <li>
+                                        {{ previous.class|abbr_class }} <a href="#traces-link-{{ i + 1 }}" onclick="toggle('traces-{{ i + 1 }}', 'traces'); switchIcons('icon-traces-{{ i + 1 }}-open', 'icon-traces-{{ i + 1 }}-close');">&#187;</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+
+              {% endif %}
+            {# =================================================================================================== #}
+
+        </div>
+
+        </div>
+
+    <hr>
+    <br>
+    <br>
+    <p>
+      <a href="{{ path('tm_blog_home') }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-home"></i>
+      Retour à l'accueil
+      </a>
+    </p>
+
+    {# ================================================= FIN DU CORPS DE LA PAGE ================================================ #}
+    </div>
+</div>
+
+<div class="product-widget-area">
+    <div class="zigzag-bottom"></div>
+</div>
+   
+
+{% endblock tm_blog_body %}

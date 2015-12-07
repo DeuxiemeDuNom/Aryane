@@ -1,0 +1,106 @@
+{# src/TM/BlogBundle/Resources/views/Article/legal.html.twig #}
+
+{% extends "TMBlogBundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }} | A propos{% endblock title %}
+
+{% set name = 'aryane.net' %}
+{% set hebergeur = 'https://www.phpnet.org/' %}
+{% set linkedin = 'https://fr.linkedin.com/pub/martial-etoka/99/586/34' %}
+{% set url = app.request.baseUrl %}
+
+{% block tm_blog_body %}
+
+<div class="product-big-title-area under">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-bit-title text-center">
+                    <h2>A propos...</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="maincontent-area">
+    <br><br><br>
+    <div class="container">
+    {# ==================================================== CORPS DE LA PAGE =================================================== #}
+            
+
+          <h2 class="dyna" style="color:#E0837E">- A propos -</h2><br />
+
+          <div class="legal">{# ================================= Div légal ================================================ #}
+
+            <h3>Le site : {{name}}</h3>
+            <p>
+              Ce site est une démo. Précisement une mise en pratique (la deuxième) de connaisances du framework <a href="https://symfony.com/" target="_blank">Symfony™</a>.
+            </p>
+
+            <br><h3>Le développeur d'<a href="{{url}}">{{name}}</a> : <a href="{{linkedin}}" target="_blank">Martial ETOKA</a></h3>
+            <p>
+              Reconverti après une expérience de près de 9 ans au sein de la même entreprise (Game), je me consacre désormais entièrement au développement web. A mon sens, l’expérience nait de la pratique sur "le terrain". Je souhaite donc intégrer une équipe avec laquelle partager un savoir. Mon parcours fait tant la preuve de mon sérieux que de ma motivation, de mon efficacité que de ma débrouillardise. Une solide formation de l'<a href="http://www.ifocop.fr/" target="_blank">Ifocop</a>, m'a amené à mettre en ligne un site e-commerce de toutes pièces sans framework ni cms.
+              
+              Conscient du chemin restant à parcourir, j'ai pris le temps d'approfondir mes connaissances en programmation orientée objet puis de me former au framework <a href="https://symfony.com/" target="_blank">Symfony™</a>.
+
+              
+            </p>
+              
+            <br>
+            <br>
+
+            <script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
+            <script type="IN/MemberProfile" data-id="https://www.linkedin.com/pub/martial-etoka/99/586/34" data-format="inline" data-related="false">
+            </script>
+
+            <hr>
+            <br><h2 class="dyna" style="color:#E0837E">- Mes compétences -</h2>
+            <div class="paragraph">
+              <p>
+                <ul>
+                  <li>HTML 5</li>
+                  <li>PHP (orienté objet)</li>
+                  <li>SQL</li>
+                  <li>JavaScript</li>
+                  <li>CSS</li>
+                  <li>XML</li>
+                  <li>TWIG</li>
+                </ul>  
+              </p>
+            </div>
+
+            <br><h2 class="dyna" style="color:#E0837E">- Autre(s) création(s) -</h2>
+            <div class="paragraph">
+              <p>
+                <ul>
+                  <li><a href="http://reza-stax.fr/" target="_blank">reza-stax.fr</a> (également sous <a href="https://symfony.com/" target="_blank">Symfony™</a>)</li>
+                </ul>  
+              </p>
+            </div>
+
+          </div>{# ============================================= Fin Div légal ============================================= #}
+
+
+            <br>
+            <hr>
+            <p>
+              <a href="{{ path('tm_blog_home') }}" class="btn btn-default">
+                <i class="glyphicon glyphicon-home"></i>
+                Retour à l'accueil
+              </a>
+            </p>
+
+
+            
+
+
+    {# ================================================= FIN DU CORPS DE LA PAGE ================================================ #}
+    </div>
+</div>
+
+<div class="product-widget-area">
+    <div class="zigzag-bottom"></div>
+</div>
+    
+{% endblock tm_blog_body %}

@@ -1,0 +1,19 @@
+{# src/TM/BlogBundle/Resources/views/layout.html.twig #}
+
+{% extends "::base.html.twig" %}
+
+{% block body %}
+	
+	{#  ==================================== Header ==================================== #}
+	{{ include("TMBlogBundle:Article:header.html.twig") }}
+	
+	{#  ==================================== Corps ==================================== #}
+	{% block tm_blog_body %}
+	{% endblock tm_blog_body %}
+	
+	{#  ==================================== Footer ==================================== #}
+	{{ include("TMBlogBundle:Article:footer.html.twig") }}
+	
+	
+
+{% endblock body %}

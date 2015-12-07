@@ -1,0 +1,71 @@
+
+
+{# src/TM/BlogBundle/Resources/views/Article/delete_user.html.twig #}
+
+{% extends 'TMBlogBundle::layout.html.twig' %}
+
+{% block title %}{{ parent() }} | Supprimer votre profil{% endblock title %}
+
+{% block tm_blog_body %}
+
+
+  
+<div class="product-big-title-area under">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-bit-title text-center">
+                    <h2>Confirmer ?</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ==================================================== Début du Corps ==================================================== -->
+
+
+<div class="maincontent-area">
+    <br><br><br>
+    <div class="container">
+    {# ==================================================== CORPS DE LA PAGE =================================================== #}
+         
+            <fieldset class="fielding">
+              <legend>
+                <h2 class="dyna">Vous nous quittez? Mais... on vous aime, nous!</h2>
+              </legend>
+              <h3 class="erreur">
+                C'est votre dernier mot, "{{ app.user.username|capitalize }}" ?
+              </h3>
+              <br>
+              <hr>
+              
+              <form action="{{ path('tm_blog_ciao') }}" method="post">
+                <a href="{{ path('tm_blog_home') }}" class="btn btn-default">
+                  <i class="glyphicon glyphicon-home"></i>
+                  Retour à l'accueil
+                </a>
+                <a href="{{ path('fos_user_profile_show') }}" class="btn btn-default">
+                  <i class="glyphicon glyphicon-chevron-left"></i>
+                  Retour à votre profil
+                </a>
+                {# Ici j'ai écrit le bouton de soumission à la main #}
+                <input type="submit" value="Supprimer" class="btn btn-default" />
+                {# Ceci va générer le champ CSRF #}
+                {{ form_rest(form) }}
+              </form>
+            </fieldset>
+            
+
+
+    {# ================================================= FIN DU CORPS DE LA PAGE ================================================ #}
+    </div>
+</div>
+
+<div class="product-widget-area">
+    <div class="zigzag-bottom"></div>
+</div>
+    
+
+<!-- ==================================================== fin du Corps ==================================================== -->
+
+{% endblock tm_blog_body %}

@@ -1,0 +1,36 @@
+{% extends 'TMBlogBundle::layout.html.twig' %}
+
+{% block title %}{{ parent() }} | Modifier un article{% endblock title %}
+
+{% block tm_blog_body %}
+
+
+<!-- ==================================================== Début du Corps ==================================================== -->
+<div class="jumbotron transpa">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8 col-lg-offset-1 corp">
+          <div class="corp-bg">
+            <fieldset class="fielding">
+              <legend>
+                <h2>Modifier un article</h2>
+              </legend>
+              {{ include("TMBlogBundle:Article:form.html.twig") }}
+            </fieldset>
+
+            <p>
+              <a href="{{ path('tm_blog_home') }}" class="btn btn-default">
+                <i class="glyphicon glyphicon-home"></i>
+                Retour à l'accueil
+              </a>
+            </p>
+            
+          </div>
+    </div>
+   </div>
+  </div>
+</div>
+<!-- ==================================================== fin du Corps ==================================================== -->
+
+
+{% endblock tm_blog_body %}

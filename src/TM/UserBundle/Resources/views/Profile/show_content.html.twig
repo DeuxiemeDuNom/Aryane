@@ -1,0 +1,16 @@
+{# /src/TM/UserBundle/Resources/views/Security/show_content.html.twig #}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="fos_user_user_show">
+    <h4>{{ 'profile.show.username'|trans }}: {{ app.user.username }}</h4>
+
+    <h4>{{ 'profile.show.email'|trans }}: {{ app.user.email }}</h4>
+
+	<br>
+	<br>
+
+    <a href="{{path('tm_blog_home')}}" class="custom_btn"><span class="glyphicon glyphicon-home"></span> Retour à l'accueil</a>
+	
+
+</div>

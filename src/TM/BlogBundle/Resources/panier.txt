@@ -1,0 +1,121 @@
+<div class="product-big-title-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="product-bit-title text-center">
+                        <h2>Panier</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End Page title area -->
+    
+    
+    <div class="single-product-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                {# =================================================== Sidebar =================================================== #}
+                {{ include("TMBlogBundle:Produit:sidebar.html.twig") }}
+                
+                <div class="col-md-8">
+                    <div class="product-content-right">
+                        <div class="woocommerce">
+                            <form method="post" action="#">
+                                <table cellspacing="0" class="shop_table cart">
+                                    <thead>
+                                        <tr>
+                                            <th class="product-remove">&nbsp;</th>
+                                            <th class="product-thumbnail">&nbsp;</th>
+                                            <th class="product-name">Produit(s)</th>
+                                            <th class="product-price">Prix</th>
+                                            <th class="product-quantity">Quantité</th>
+                                            <th class="product-subtotal">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% if app.session %}
+                                            {{dump(app.session)}}
+                                        {% endif %}
+                                        
+                                        {% for article in articles %}
+                                            <tr class="cart_item">
+                                                <td class="product-remove">
+                                                    <a title="Remove this item" class="remove" href="#">×</a> 
+                                                </td>
+
+                                                <td class="product-thumbnail">
+                                                    <a href="single-product.html"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="{{ asset(article.image.webPath) }}"
+                                                                    alt="{{ article.image.alt }}"></a>
+                                                </td>
+
+                                                <td class="product-name">
+                                                    <a href="single-product.html">{{article.name}}</a> 
+                                                </td>
+
+                                                <td class="product-price">
+                                                    <span class="amount">{{article.price}} €</span> 
+                                                </td>
+
+                                                <td class="product-quantity">
+                                                    <div class="quantity buttons_added">
+                                                        <input type="button" class="minus" value="-">
+                                                        <input type="number" size="4" class="input-text qty text" title="Qty" value="1" min="0" step="1">
+                                                        <input type="button" class="plus" value="+">
+                                                    </div>
+                                                </td>
+
+                                                <td class="product-subtotal">
+                                                    <span class="amount">{{article.price}} €</span> 
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                        <tr>
+                                            <td class="actions" colspan="6">
+                                                <div class="coupon">
+                                                    <label for="coupon_code">Code : </label>
+                                                    <input type="text" placeholder="Code promotionnel" value="" id="coupon_code" class="input-text" name="coupon_code">
+                                                    <input type="submit" value="Promotion" name="apply_coupon" class="button">
+                                                </div>
+                                                <input type="submit" value="Mettre à jour" name="update_cart" class="button">
+                                                <input type="submit" value="Procéder au Paiement" name="proceed" class="checkout-button button alt wc-forward">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+
+                            <div class="cart-collaterals">
+
+                            {# Deux autres produits de la même catégorie #}
+                            {{ render(controller('TMBlogBundle:Autre:interest')) }}
+
+                            <div class="cart_totals ">
+                                <h2>Total du panier</h2>
+
+                                <table cellspacing="0">
+                                    <tbody>
+                                        <tr class="cart-subtotal">
+                                            <th>Sous-total du panier</th>
+                                            <td><span class="amount">15.00 €</span></td>
+                                        </tr>
+
+                                        <tr class="shipping">
+                                            <th>Frais de port</th>
+                                            <td>Aucun</td>
+                                        </tr>
+
+                                        <tr class="order-total">
+                                            <th>Total commande</th>
+                                            <td><strong><span class="amount">4567 €</span></strong> </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            </div>
+                        </div>                        
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>

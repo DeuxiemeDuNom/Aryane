@@ -1,0 +1,135 @@
+{% extends 'TMBlogBundle::layout.html.twig' %}
+
+{% block title %}{{ parent() }} | {{title}}{% endblock title %}
+
+{% block tm_blog_body %}
+
+{% set no_commande = 0 %}
+{% set date = '07/11/2001 - 10:00' %}
+
+<div class="product-big-title-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-bit-title text-center">
+                    <h2>{{title}}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="maincontent-area">
+    <br><br><br>
+    <div class="container">
+    {# ==================================================== CORPS DE LA PAGE =================================================== #}
+
+            
+            {% if commande_list is empty %}
+              <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                  <h2 >Aucune commande en cours</h2>br
+                <a class="custom_btn" href="{{path('tm_blog_home')}}"><span class="glyphicon glyphicon-home"></span> Retour à l'accueil</a>
+                </div>
+              </div>
+            {% endif %}
+
+            {# ======================= Affichage eventuel des commandes en cours ======================= #}
+
+            {% if display %}
+
+                {% for commande in commande_list %}
+                  {% set no_commande = no_commande + 1 %}
+                  <table cellspacing="0" class="shop_table cart">
+                        <thead>
+                            <tr>
+                                {% for date in commande|slice(0,1) %}
+                                    <th colspan="4" class="product-name">Commande n° : 00{{no_commande}} => [ {{date|date("d/m/Y - H:i")}} ] </th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <thead>
+                            <tr>
+                                <th class="product-name">Produit(s)</th>
+                                <th class="product-price">Prix</th>
+                                <th class="product-quantity">Quantité</th>
+                                <th class="product-subtotal">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if commande is not empty %}
+
+                                {% set qte = 0 %}
+                                {% set total = 0 %}
+
+
+                                {% for part2 in commande|slice(1,2) %}
+                                    {% for art in part2 %}
+                                      {% set qte = qte + art.qte %}
+
+                                      {% set total = total + (art.price * art.qte)  %}
+                                    {% endfor %}
+                                {% endfor %}
+
+                               
+
+                                
+
+                                {% for part2 in commande|slice(1,2) %}
+                                  {% for article in part2 %}
+                                      <tr class="cart_item">
+
+                                          <td class="product-name">
+                                              <a href="{{path('tm_blog_presentation', {'id': article.id})}}">{{article.name}}</a> 
+                                          </td>
+
+                                          <td class="product-price">
+                                              <span class="amount">{{article.price}} €</span> 
+                                          </td>
+
+                                          <td class="product-quantity">
+                                              <div class="quantity buttons_added">
+                                                  <strong>X</strong> {{article.qte}}
+                                              </div>
+                                          </td>
+
+                                          <td class="product-subtotal">
+                                              <span class="amount">{{article.price * article.qte}} €</span> 
+                                          </td>
+                                      </tr>
+                                  {% endfor %}
+                                {% endfor %}
+                            
+                            {% endif %}
+                            
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3" class="product-name">Total HT</td>
+                                <td class="product-price">{{total}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="product-name">Total TTC</td>
+                                <td class="product-price"><strong>{{total|promo(20)}}</strong></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <hr>
+                  
+                {% endfor %}
+            {% endif %}
+
+      
+            
+
+
+    {# ================================================= FIN DU CORPS DE LA PAGE ================================================ #}
+    </div>
+</div>
+
+<div class="product-widget-area">
+    <div class="zigzag-bottom"></div>
+</div>
+    
+{% endblock tm_blog_body %}
